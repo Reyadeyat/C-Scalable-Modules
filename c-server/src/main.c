@@ -12,15 +12,11 @@ int main(int argc, char **argv) {
     char *lib_dir = "/lib/libc-lib.so";
     strncpy(start, lib_dir, strlen(lib_dir)+1);
     printf ("\nLib dir: %s\n", path);
-    //strlen(argv[0])-strlen(start)
-    //getcwd (path, 1024);
-    //printf ("\nCurrent working dir: %s\n", path);
-    //strcat(path, "/../lib/libc-lib.so");
     void* handle = dlopen(path, RTLD_LAZY);
     char* dl_error = dlerror();
     if (handle == NULL) {
         // report error ...
-        printf("Allaho Akbar - Error Loading lib file => %s\n", dl_error);
+        printf("Error Loading lib file '%s' => %s\n", path, dl_error);
     } else {
 
 		int ret;

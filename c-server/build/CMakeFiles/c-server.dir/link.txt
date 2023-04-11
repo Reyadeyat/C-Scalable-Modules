@@ -1,1 +1,0 @@
-/usr/bin/cc -g "CMakeFiles/c-server.dir/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/src/main.c.o" -o c-server   -L/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/../c-lib/lib 
