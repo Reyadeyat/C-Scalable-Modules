@@ -30,7 +30,6 @@ foreach(HEADER_FILE IN LISTS HEADER_FILE_LIST)
 endforeach()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION lib)
-#install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib COMPONENT Libraries)
 
 #cd /linux/MODULE-ORIENTED-C
 #mkdir ./c-lib
