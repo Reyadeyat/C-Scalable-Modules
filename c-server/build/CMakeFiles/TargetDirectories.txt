@@ -1,7 +1,0 @@
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/c-server.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/edit_cache.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/rebuild_cache.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/list_install_components.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/install.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/install/local.dir
-/linux/reyadeyat/projects/open-source/C-Scalable-Modules/c-server/build/CMakeFiles/install/strip.dir
