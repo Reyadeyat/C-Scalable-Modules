@@ -53,10 +53,4 @@ dkms.conf
 
 
 #CMake
-/build/CMakeCache.txt
-/build/Makefile
-/build/c-server
-/build/cmake_install.cmake
-/build/install_manifest.txt
-/build/CMakeFiles
-
+build/
