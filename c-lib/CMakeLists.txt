@@ -5,7 +5,7 @@ set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_BUILD_TYPE DEBUG)
 
-set(SOURCE_DIRECTORY "../src")
+set(SOURCE_DIRECTORY "./src")
 set(INCLUDE_DIRECTORY "../../c-server/include")
 file(MAKE_DIRECTORY ${INCLUDE_DIRECTORY})
 
@@ -38,7 +38,7 @@ install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 #mkdir ./c-lib/lib
 #mkdir ./c-lib/src
 #nano ./c-lib/build/CMakeLists.txt
-#cmake ./c-lib/build -B./c-lib/build
+#cmake ./c-lib -B./c-lib/build
 #cmake --build ./c-lib/build --target all -j 4
 #cmake --install ./c-lib/build --prefix=./c-lib
 #readelf -s ./c-lib/lib/libc-lib.so
