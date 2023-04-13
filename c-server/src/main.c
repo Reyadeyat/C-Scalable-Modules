@@ -34,24 +34,33 @@
 #include "module_a/module_a.h"
 
 int main(int argc, char **argv) {
-    char path [1024];
+    char path[1024];
     strncpy(path, argv[0], strlen(argv[0]));
+    printf ("Program dir: %s\n", path);
     char *start = strstr(path, "/bin");
-    char *lib_dir = "/lib/libc-lib.so";
+    char *lib_dir = "/lib/libc-lib-module-a.so";
     strncpy(start, lib_dir, strlen(lib_dir)+1);
-    printf ("\nLib dir: %s\n", path);
+    printf ("Lib dir: %s\n", path);
     void* handle = dlopen(path, RTLD_LAZY);
-    char* dl_error = dlerror();
+    char* dl_error = (char*) dlerror();
     if (handle == NULL) {
         printf("Error Loading lib file '%s' => %s\n", path, dl_error);
     } else {
 
 		int ret;
+        start[5]='\0';
+        printf ("Lib dir prefix is : %s\n", path);
 
-        Module_A_Process* (*get_module_a_process)(char *);
+        Module_A_Process* (*get_module_a_process)(char *, char *);
         get_module_a_process = dlsym(handle, "get_module_a_process");
+        if (get_module_a_process == NULL) {
+            printf ("Error loading function get_module_a_process\n");
+        }
 
-        Module_A_Process* module_a_process_0_0_0 = get_module_a_process("0.0.0");
+        char path_copy[1024];
+        strncpy(path_copy, path, strlen(path)+1);
+        printf ("Calling get_module_a_process 0.0.0 path => %s\n", path_copy);
+        Module_A_Process* module_a_process_0_0_0 = get_module_a_process((char*) path_copy, "0.0.0");
         Module_A_Data module_a_data_0_0_0 = {"0.0.0", "Module_A_Data_0_0_0", 32};
         ret = module_a_process_0_0_0->process(&module_a_data_0_0_0);
         if (ret < 0) {
@@ -60,7 +69,9 @@ int main(int argc, char **argv) {
             goto error_0_0_0;
         }
 
-        Module_A_Process* module_a_process_0_0_1 = get_module_a_process("0.0.1");
+        strncpy(path_copy, path, strlen(path)+1);
+        printf ("Calling get_module_a_process 0.0.1 path => %s\n", path_copy);
+        Module_A_Process* module_a_process_0_0_1 = get_module_a_process((char*) path_copy, "0.0.1");
         Module_A_Data module_a_data_0_0_1 = {"0.0.1", "Module_A_Data_0_0_1", 0, 64};
         ret = module_a_process_0_0_1->process(&module_a_data_0_0_1);
 
