@@ -32,8 +32,6 @@
 #include <string.h>
 #include "module_a.h"
 
-static Module_A_Process *module_a_process;
-
 Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
     printf("get_module_a_process lib_path => %s\n", lib_path);
     if (strcmp(version_number, "0.0.0") == 0) {
@@ -51,7 +49,7 @@ Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
         module_a_external_construct = dlsym(handle, "module_a_external_construct_v_0_0_0");
         module_a_external_destruct = dlsym(handle, "module_a_external_destruct_v_0_0_0");
         module_a_external_process = dlsym(handle, "module_a_external_process_v_0_0_0");
-        module_a_process = malloc(sizeof(Module_A_Process));
+        Module_A_Process *module_a_process = malloc(sizeof(Module_A_Process));
         module_a_process->construct = module_a_external_construct;
         module_a_process->destruct = module_a_external_destruct;
         module_a_process->process = module_a_external_process;
@@ -72,7 +70,7 @@ Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
         module_a_external_construct = dlsym(handle, "module_a_external_construct_v_0_0_1");
         module_a_external_destruct = dlsym(handle, "module_a_external_destruct_v_0_0_1");
         module_a_external_process = dlsym(handle, "module_a_external_process_v_0_0_1");
-        module_a_process = malloc(sizeof(Module_A_Process));
+        Module_A_Process *module_a_process = malloc(sizeof(Module_A_Process));
         module_a_process->construct = module_a_external_construct;
         module_a_process->destruct = module_a_external_destruct;
         module_a_process->process = module_a_external_process;
