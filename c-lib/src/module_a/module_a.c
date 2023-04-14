@@ -26,20 +26,57 @@
  * @since 2023.04.01
  */
 
+#include <dlfcn.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "module_a.h"
-#include "module_a_0_0_0/module_a_0_0_0.h"
-#include "module_a_0_0_1/module_a_0_0_1.h"
 
-static Module_A_Process make_synth_v_0_0_0 = { module_a_external_construct_v_0_0_0, module_a_external_destruct_v_0_0_0, module_a_external_process_v_0_0_0 };
-static Module_A_Process make_synth_v_0_0_1 = { module_a_external_construct_v_0_0_1, module_a_external_destruct_v_0_0_1, module_a_external_process_v_0_0_1 };
+static Module_A_Process *module_a_process;
 
-Module_A_Process* get_module_a_process(char *version_number) {
+Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
+    printf("get_module_a_process lib_path => %s\n", lib_path);
     if (strcmp(version_number, "0.0.0") == 0) {
-        return &make_synth_v_0_0_0;
+        strcat(lib_path, "libc-lib-module-a.0.0.0.so");
+        printf("lib_path => %s\n", lib_path);
+        void* handle = dlopen(lib_path, RTLD_LAZY);
+        char* dl_error = dlerror();
+        if (handle == NULL) {
+            printf("Error Loading lib file '%s' => %s\n", lib_path, dl_error);
+            return NULL;
+        }
+        void (*module_a_external_construct)(Module_A_Data*);
+        void (*module_a_external_destruct)(Module_A_Data*);
+        int (*module_a_external_process)(Module_A_Data*);
+        module_a_external_construct = dlsym(handle, "module_a_external_construct_v_0_0_0");
+        module_a_external_destruct = dlsym(handle, "module_a_external_destruct_v_0_0_0");
+        module_a_external_process = dlsym(handle, "module_a_external_process_v_0_0_0");
+        module_a_process = malloc(sizeof(Module_A_Process));
+        module_a_process->construct = module_a_external_construct;
+        module_a_process->destruct = module_a_external_destruct;
+        module_a_process->process = module_a_external_process;
+        return module_a_process;
     }
     if (strcmp(version_number, "0.0.1") == 0) {
-        return &make_synth_v_0_0_1;
+        strcat(lib_path, "libc-lib-module-a.0.0.1.so");
+        printf("lib_path => %s\n", lib_path);
+        void* handle = dlopen(lib_path, RTLD_LAZY);
+        char* dl_error = (char*) dlerror();
+        if (handle == NULL) {
+            printf("Error Loading lib file '%s' => %s\n", lib_path, dl_error);
+            return NULL;
+        }
+        void (*module_a_external_construct)(Module_A_Data*);
+        void (*module_a_external_destruct)(Module_A_Data*);
+        int (*module_a_external_process)(Module_A_Data*);
+        module_a_external_construct = dlsym(handle, "module_a_external_construct_v_0_0_1");
+        module_a_external_destruct = dlsym(handle, "module_a_external_destruct_v_0_0_1");
+        module_a_external_process = dlsym(handle, "module_a_external_process_v_0_0_1");
+        module_a_process = malloc(sizeof(Module_A_Process));
+        module_a_process->construct = module_a_external_construct;
+        module_a_process->destruct = module_a_external_destruct;
+        module_a_process->process = module_a_external_process;
+        return module_a_process;
     }
     return NULL;
 }
