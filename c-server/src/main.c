@@ -34,8 +34,9 @@
 #include "module_a/module_a.h"
 
 int main(int argc, char **argv) {
-    char path[1024];
-    strncpy(path, argv[0], strlen(argv[0]));
+    int len = strlen(argv[0]) + 1 + 1024;
+    char path[len];
+    memcpy(path, argv[0], strlen(argv[0])+1);
     printf ("Program dir: %s\n", path);
     char *start = strstr(path, "/bin");
     char *lib_dir = "/lib/libc-lib-module-a.so";
@@ -57,8 +58,8 @@ int main(int argc, char **argv) {
             printf ("Error loading function get_module_a_process\n");
         }
 
-        char path_copy[1024];
-        strncpy(path_copy, path, strlen(path)+1);
+        char path_copy[len];
+        memcpy(path_copy, path, strlen(path)+1);
         printf ("Calling get_module_a_process 0.0.0 path => %s\n", path_copy);
         Module_A_Process* module_a_process_0_0_0 = get_module_a_process((char*) path_copy, "0.0.0");
         Module_A_Data module_a_data_0_0_0 = {"0.0.0", "Module_A_Data_0_0_0", 32};
@@ -69,7 +70,7 @@ int main(int argc, char **argv) {
             goto error_0_0_0;
         }
 
-        strncpy(path_copy, path, strlen(path)+1);
+        memcpy(path_copy, path, strlen(path)+1);
         printf ("Calling get_module_a_process 0.0.1 path => %s\n", path_copy);
         Module_A_Process* module_a_process_0_0_1 = get_module_a_process((char*) path_copy, "0.0.1");
         Module_A_Data module_a_data_0_0_1 = {"0.0.1", "Module_A_Data_0_0_1", 0, 64};

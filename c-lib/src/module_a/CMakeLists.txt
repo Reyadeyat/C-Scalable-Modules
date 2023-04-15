@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.26)
 project(c-lib-module-a)
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_BUILD_TYPE DEBUG)
+set(CMAKE_C_FLAGS "${CFLAGS} -Wall -Werror -fPIC -O3 -fstack-protector --save-temps")
+message("CFLAGS ${CMAKE_C_FLAGS}")
 
 set(SOURCE_DIRECTORY ".")
 file(GLOB SOURCE_FILE_LIST "${SOURCE_DIRECTORY}/*.c")
