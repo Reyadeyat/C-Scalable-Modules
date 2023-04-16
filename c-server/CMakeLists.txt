@@ -1,22 +1,19 @@
 cmake_minimum_required(VERSION 3.26)
+include(./CMakeFunctions.txt)
 project(c-server)
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_BUILD_TYPE DEBUG)
+set(CMAKE_C_FLAGS "${CFLAGS} -Wall -Werror -O3 -fstack-protector --save-temps")
+message("CFLAGS ${CMAKE_C_FLAGS}")
 
 #Copy Include Directory Header Files from c-lib
 set(LIB_SOURCE_DIRECTORY "../c-lib/src")
 set(INCLUDE_DIRECTORY "./include")
 file(MAKE_DIRECTORY ${INCLUDE_DIRECTORY})
-file(GLOB_RECURSE HEADER_FILE_LIST "${LIB_SOURCE_DIRECTORY}/*.h")
-foreach(HEADER_FILE IN LISTS HEADER_FILE_LIST)
-	string(REPLACE ${LIB_SOURCE_DIRECTORY} ${INCLUDE_DIRECTORY} NEW_INCLUDE_HEADER_FILE ${HEADER_FILE})
-	get_filename_component(NEW_INCLUDE_HEADER_DIRECTORY ${NEW_INCLUDE_HEADER_FILE} DIRECTORY)
-	file(MAKE_DIRECTORY ${NEW_INCLUDE_HEADER_DIRECTORY})
-	message("Copying header: ${HEADER_FILE} TO ${NEW_INCLUDE_HEADER_DIRECTORY}")
-	file(COPY_FILE ${HEADER_FILE} ${NEW_INCLUDE_HEADER_FILE})
-endforeach()
+#file(GLOB_RECURSE HEADER_FILE_LIST "${LIB_SOURCE_DIRECTORY}/*.h")
+COPY_FILE_LIST_FROM_TO("/module_a/*.h" ${LIB_SOURCE_DIRECTORY} ${INCLUDE_DIRECTORY})
 
 file(MAKE_DIRECTORY "./lib")
 INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORY})
@@ -26,13 +23,7 @@ set(SOURCE_DIRECTORY "./src")
 file(GLOB_RECURSE SOURCE_FILE_LIST "${SOURCE_DIRECTORY}/*.c")
 ADD_EXECUTABLE(c-server ${SOURCE_FILE_LIST})
 
-#file(COPY_FILE "../c-lib/lib/libc-lib.so" "./lib/libc-lib.so")
-SET(LIB_DIRECTORY ../c-lib/lib)
-file(GLOB_RECURSE LIB_FILE_LIST "${LIB_DIRECTORY}/*.so")
-foreach(LIB_FILE IN LISTS LIB_FILE_LIST)
-	#message(${LIB_FILE})
-	get_filename_component(LIB_FILE_NAME ${LIB_FILE} NAME)
-	file(COPY_FILE ${LIB_FILE} lib/${LIB_FILE_NAME})
-endforeach()
+COPY_FILE_LIST_FROM_TO("/*.so" "../c-lib/lib" "./lib")
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin COMPONENT Binaries)
+

@@ -35,9 +35,9 @@ typedef struct _Module_A_Data_ {
     /**@since 0.0.0*/
     char* name;
     /**@debrecated 0.0.1*/
-    int buffer_size;
+    unsigned int buffer_size;
     /**@since 0.0.1*/
-    long buffer_size_long;
+    unsigned long buffer_size_long;
 } Module_A_Data;
 
 #endif //C_LIB_MODULE_A_DATA_STRUCTURES_H
