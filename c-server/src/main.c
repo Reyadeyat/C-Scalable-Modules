@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     memcpy(path, argv[0], strlen(argv[0])+1);
     printf ("Program dir: %s\n", path);
     char *start = strstr(path, "/bin");
-    char *lib_dir = "/lib/libc-lib-module-a.so";
+    char *lib_dir = "/lib/c-lib-module-a.so";
     strncpy(start, lib_dir, strlen(lib_dir)+1);
     printf ("Lib dir: %s\n", path);
     void* handle = dlopen(path, RTLD_LAZY);
