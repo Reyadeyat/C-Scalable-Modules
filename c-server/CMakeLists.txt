@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.26)
 include(./CMakeFunctions.txt)
 project(c-server)
-set(CMAKE_STATIC_LIBRARY_PREFIX "")
+#set(PREFIX "")
+#set(CMAKE_STATIC_LIBRARY_PREFIX "")
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+#set(CMAKE_SHARED_MODULE_PREFIX "")
 
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_BUILD_TYPE DEBUG)

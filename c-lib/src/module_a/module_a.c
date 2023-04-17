@@ -35,7 +35,7 @@
 Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
     printf("get_module_a_process lib_path => %s\n", lib_path);
     if (strcmp(version_number, "0.0.0") == 0) {
-        strcat(lib_path, "libc-lib-module-a.0.0.0.so");
+        strcat(lib_path, "c-lib-module-a.0.0.0.so");
         printf("lib_path => %s\n", lib_path);
         void* handle = dlopen(lib_path, RTLD_LAZY);
         char* dl_error = dlerror();
@@ -56,7 +56,7 @@ Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
         return module_a_process;
     }
     if (strcmp(version_number, "0.0.1") == 0) {
-        strcat(lib_path, "libc-lib-module-a.0.0.1.so");
+        strcat(lib_path, "c-lib-module-a.0.0.1.so");
         printf("lib_path => %s\n", lib_path);
         void* handle = dlopen(lib_path, RTLD_LAZY);
         char* dl_error = (char*) dlerror();
