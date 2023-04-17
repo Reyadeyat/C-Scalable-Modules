@@ -21,7 +21,7 @@ set(SOURCE_DIRECTORY "./src")
 file(GLOB_RECURSE SOURCE_FILE_LIST "${SOURCE_DIRECTORY}/*.c")
 ADD_EXECUTABLE(c-server ${SOURCE_FILE_LIST})
 
-COPY_FILE_LIST_FROM_TO("/*.so" "../c-lib/lib" "./lib", false)
+COPY_FILE_LIST_FROM_TO("/*.so" "../c-lib/lib" "./lib" false)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin COMPONENT Binaries)
 
