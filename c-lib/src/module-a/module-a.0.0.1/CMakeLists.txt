@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-project(c-lib-module-a.0.0.1)
+project(c-lib-module-a.0.0.1 C)
 #set(PREFIX "")
 #set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_SHARED_LIBRARY_PREFIX "")

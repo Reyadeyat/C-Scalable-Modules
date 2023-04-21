@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 include(./CMakeFunctions.txt)
-project(c-server)
+project(c-server C)
 #set(PREFIX "")
 #set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
@@ -22,7 +22,7 @@ LINK_DIRECTORIES("../c-lib/lib")
 
 set(SOURCE_DIRECTORY "./src")
 file(GLOB_RECURSE SOURCE_FILE_LIST "${SOURCE_DIRECTORY}/*.c")
-ADD_EXECUTABLE(c-server ${SOURCE_FILE_LIST})
+ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCE_FILE_LIST})
 
 COPY_FILE_LIST_FROM_TO("/*.so" "../c-lib/lib" "./lib" false)
 
