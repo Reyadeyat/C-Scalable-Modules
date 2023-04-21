@@ -27,7 +27,7 @@
  */
 
 #include <stdio.h>
-#include "module_a_0_0_0.h"
+#include "module-a.0.0.0.h"
 
 void module_a_internal_process_0_0_0(Module_A_Data *module_a_data) {
     printf("Module A internal process version %s name %s buffer_size %u\n", module_a_data->version, module_a_data->name, module_a_data->buffer_size);

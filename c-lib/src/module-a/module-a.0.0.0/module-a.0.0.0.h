@@ -26,18 +26,17 @@
  * @since 2023.04.01
  */
 
+#ifndef C_LIB_MODULE_A_0_0_0_H
+#define C_LIB_MODULE_A_0_0_0_H
 
-#ifndef C_LIB_MODULE_A_H
-#define C_LIB_MODULE_A_H
+#include "../module-a-data-structures.h"
 
-#include "module_a_data_structures.h"
+//internal
+void module_a_internal_process_0_0_0(Module_A_Data *module_a_data);
 
-typedef struct _Module_A_Process_ {
-    void (*construct)(Module_A_Data *module_a_data);
-    void (*destruct)(Module_A_Data *module_a_data);
-    int (*process)(Module_A_Data *module_a_data);
-} Module_A_Process;
+//external
+extern void module_a_external_construct_v_0_0_0(Module_A_Data *module_a_data);
+extern void module_a_external_destruct_v_0_0_0(Module_A_Data *module_a_data);
+extern int module_a_external_process_v_0_0_0(Module_A_Data *module_a_data);
 
-extern Module_A_Process* get_module_a_process(char* lib_path, char *version_number);
-
-#endif //C_LIB_MODULE_A_H
+#endif //C_LIB_MODULE_A_0_0_0_H

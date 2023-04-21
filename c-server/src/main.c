@@ -31,7 +31,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "module_a/module_a.h"
+#include "module-a/module-a.h"
 
 int main(int argc, char **argv) {
     int len = strlen(argv[0]) + 1 + 1024;

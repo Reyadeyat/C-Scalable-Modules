@@ -26,17 +26,17 @@
  * @since 2023.04.01
  */
 
-#ifndef C_LIB_MODULE_A_0_0_0_H
-#define C_LIB_MODULE_A_0_0_0_H
+#ifndef C_LIB_MODULE_A_0_0_1_H
+#define C_LIB_MODULE_A_0_0_1_H
 
-#include "../module_a_data_structures.h"
+#include "../module-a-data-structures.h"
 
 //internal
-void module_a_internal_process_0_0_0(Module_A_Data *module_a_data);
+void module_a_internal_process_0_0_1(Module_A_Data *module_a_data);
 
 //external
-extern void module_a_external_construct_v_0_0_0(Module_A_Data *module_a_data);
-extern void module_a_external_destruct_v_0_0_0(Module_A_Data *module_a_data);
-extern int module_a_external_process_v_0_0_0(Module_A_Data *module_a_data);
+extern void module_a_external_construct_v_0_0_1(Module_A_Data *module_a_data);
+extern void module_a_external_destruct_v_0_0_1(Module_A_Data *module_a_data);
+extern int module_a_external_process_v_0_0_1(Module_A_Data *module_a_data);
 
-#endif //C_LIB_MODULE_A_0_0_0_H
+#endif //C_LIB_MODULE_A_0_0_1_H
