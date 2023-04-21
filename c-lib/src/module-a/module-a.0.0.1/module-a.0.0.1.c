@@ -26,7 +26,9 @@
  * @since 2023.04.01
  */
 
+#include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "module-a.0.0.1.h"
 
 void module_a_internal_process_0_0_1(Module_A_Data *module_a_data) {
