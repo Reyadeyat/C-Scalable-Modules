@@ -14,7 +14,7 @@ message("CFLAGS ${CMAKE_C_FLAGS}")
 #Copy Include Directory Header Files from c-lib
 set(LIB_SOURCE_DIRECTORY "../c-lib/src")
 set(INCLUDE_DIRECTORY "./include")
-COPY_FILE_LIST_FROM_TO("/module_a/*.h" ${LIB_SOURCE_DIRECTORY} ${INCLUDE_DIRECTORY} false)
+COPY_FILE_LIST_FROM_TO("/module-a/*.h" ${LIB_SOURCE_DIRECTORY} ${INCLUDE_DIRECTORY} false)
 
 file(MAKE_DIRECTORY "./lib")
 INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORY})

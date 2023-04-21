@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "module_a.h"
+#include "module-a.h"
 
 Module_A_Process* get_module_a_process(char* lib_path, char *version_number) {
     printf("get_module_a_process lib_path => %s\n", lib_path);

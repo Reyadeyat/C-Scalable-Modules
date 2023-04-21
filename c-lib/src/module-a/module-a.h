@@ -30,7 +30,7 @@
 #ifndef C_LIB_MODULE_A_H
 #define C_LIB_MODULE_A_H
 
-#include "module_a_data_structures.h"
+#include "module-a-data-structures.h"
 
 typedef struct _Module_A_Process_ {
     void (*construct)(Module_A_Data *module_a_data);
