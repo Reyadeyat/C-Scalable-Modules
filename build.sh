@@ -1,7 +1,7 @@
 #! /bin/sh
 
 clear
-cd /linux/MODULE-ORIENTED-C
+cd /MODULE-ORIENTED-C
 
 echo "Building c-lib/module-a/module-a.0.0.0"
 cmake ./c-lib/src/module-a/module-a.0.0.0 -B./c-lib/src/module-a/module-a.0.0.0/build
